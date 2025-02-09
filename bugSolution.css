@@ -1,0 +1,10 @@
+The issue stems from the order of operations within the `calc()` function. To correctly calculate the width, ensure you structure the calculation so that it accounts for the percentage first and then subtracts the pixel value.  Consider this example:
+
+```css
+width: calc(50% - 10px);
+/* Incorrect - 10px is subtracted before the percentage is calculated. */
+
+width: calc( (100% - 20px) / 2 );
+/*Correct- Calculates the percentage correctly first*/
+```
+In some cases you may need to specify the percentage in the calculation explicitly. For instance, if the element is contained in a container with a variable width, you would want to use the parent's width explicitly to get the correct result. Another option would be to use `vw` or `vh` for a more consistent calculation.
